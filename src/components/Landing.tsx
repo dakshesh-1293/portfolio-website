@@ -3,32 +3,35 @@ import "./styles/Landing.css";
 
 const Landing = ({ children }: PropsWithChildren) => {
   return (
-    <>
-      <div className="landing-section" id="landingDiv">
-        <div className="landing-container">
-          <div className="landing-intro">
-            <h2>Hello! I'm</h2>
-            <h1>
-              MONCY
-              <br />
-              <span>YOHANNAN</span>
-            </h1>
-          </div>
-          <div className="landing-info">
-            <h3>A Creative</h3>
-            <h2 className="landing-info-h2">
-              <div className="landing-h2-1">Designer</div>
-              <div className="landing-h2-2">Developer</div>
-            </h2>
-            <h2>
-              <div className="landing-h2-info">Developer</div>
-              <div className="landing-h2-info-1">Designer</div>
-            </h2>
-          </div>
+    <div className="landing-section" id="landingDiv">
+
+      <div className="landing-container">
+
+        {/* LEFT SIDE */}
+        <div className="landing-intro">
+          <h2 className="intro-text">Hello! I'm</h2>
+
+          <h1 className="name-text">
+            DAKSHESH
+            <br />
+            <span>PARMAR</span>
+          </h1>
         </div>
-        {children}
+
+        {/* RIGHT SIDE */}
+        <div className="landing-info">
+          <p className="subtitle"><h3>Data Science Enthusiast</h3></p>
+
+          <h2 className="landing-role">
+            Data Scientist <br />
+            & ML Engineer
+          </h2>
+        </div>
+
       </div>
-    </>
+
+      {children}
+    </div>
   );
 };
 

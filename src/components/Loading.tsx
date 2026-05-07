@@ -13,6 +13,7 @@ const Loading = ({ percent }: { percent: number }) => {
   if (percent >= 100) {
     setTimeout(() => {
       setLoaded(true);
+
       setTimeout(() => {
         setIsLoaded(true);
       }, 1000);
@@ -23,10 +24,12 @@ const Loading = ({ percent }: { percent: number }) => {
     import("./utils/initialFX").then((module) => {
       if (isLoaded) {
         setClicked(true);
+
         setTimeout(() => {
           if (module.initialFX) {
             module.initialFX();
           }
+
           setIsLoading(false);
         }, 900);
       }
@@ -35,9 +38,12 @@ const Loading = ({ percent }: { percent: number }) => {
 
   function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
     const { currentTarget: target } = e;
+
     const rect = target.getBoundingClientRect();
+
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+
     target.style.setProperty("--mouse-x", `${x}px`);
     target.style.setProperty("--mouse-y", `${y}px`);
   }
@@ -46,8 +52,9 @@ const Loading = ({ percent }: { percent: number }) => {
     <>
       <div className="loading-header">
         <a href="/#" className="loader-title" data-cursor="disable">
-          Logo
+          DAKSHESH PARMAR
         </a>
+
         <div className={`loaderGame ${clicked && "loader-out"}`}>
           <div className="loaderGame-container">
             <div className="loaderGame-in">
@@ -55,22 +62,28 @@ const Loading = ({ percent }: { percent: number }) => {
                 <div className="loaderGame-line" key={index}></div>
               ))}
             </div>
+
             <div className="loaderGame-ball"></div>
           </div>
         </div>
       </div>
+
       <div className="loading-screen">
         <div className="loading-marquee">
           <Marquee>
-            <span> A Creative Developer</span> <span>A Creative Designer</span>
-            <span> A Creative Developer</span> <span>A Creative Designer</span>
+            <span> DATA SCIENCE • ML ENGINEER </span>
+            <span> DATA ANALYST • MACHINE LEARNING </span>
+            <span> DATA SCIENCE • ML ENGINEER </span>
+            <span> DATA ANALYST • MACHINE LEARNING </span>
           </Marquee>
         </div>
+
         <div
           className={`loading-wrap ${clicked && "loading-clicked"}`}
           onMouseMove={(e) => handleMouseMove(e)}
         >
           <div className="loading-hover"></div>
+
           <div className={`loading-button ${loaded && "loading-complete"}`}>
             <div className="loading-container">
               <div className="loading-content">
@@ -78,8 +91,10 @@ const Loading = ({ percent }: { percent: number }) => {
                   Loading <span>{percent}%</span>
                 </div>
               </div>
+
               <div className="loading-box"></div>
             </div>
+
             <div className="loading-content2">
               <span>Welcome</span>
             </div>
@@ -98,13 +113,18 @@ export const setProgress = (setLoading: (value: number) => void) => {
   let interval = setInterval(() => {
     if (percent <= 50) {
       let rand = Math.round(Math.random() * 5);
+
       percent = percent + rand;
+
       setLoading(percent);
     } else {
       clearInterval(interval);
+
       interval = setInterval(() => {
         percent = percent + Math.round(Math.random());
+
         setLoading(percent);
+
         if (percent > 91) {
           clearInterval(interval);
         }
@@ -114,22 +134,27 @@ export const setProgress = (setLoading: (value: number) => void) => {
 
   function clear() {
     clearInterval(interval);
+
     setLoading(100);
   }
 
   function loaded() {
     return new Promise<number>((resolve) => {
       clearInterval(interval);
+
       interval = setInterval(() => {
         if (percent < 100) {
           percent++;
+
           setLoading(percent);
         } else {
           resolve(percent);
+
           clearInterval(interval);
         }
       }, 2);
     });
   }
+
   return { loaded, percent, clear };
 };
