@@ -85,7 +85,7 @@ const SocialIcons = () => {
 
       <a
         className="resume-button"
-        href="/Dakshesh_Main_Resume.pdf"
+        href="/Dakshesh_Resume(P).pdf"
         target="_blank"
       >
         <HoverLinks text="RESUME" />
